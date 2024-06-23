@@ -22,6 +22,7 @@
 #### 2 MPU6050模块设计
 1. 移植DMP固件库（方便获得四元数和欧拉角）
    1. 在项目录下创建MPU6050DMP文件夹
+   ![dmp](https://github.com/lidongjie1/KeilProject/blob/dev-1/dmp.png)
 2. 软件实现IIC通讯
    1. 
 3. MPU6050模块
