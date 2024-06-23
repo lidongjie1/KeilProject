@@ -3,6 +3,7 @@
 
 int main(void)
 {
+	SystemInit(); //系统初始化
 
 	
 	while (1)
