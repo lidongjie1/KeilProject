@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\User;.\System;.\Start;.\Library;.\Hardware</IncludePath>
+              <IncludePath>.\User;.\System;.\Start;.\Library;.\Hardware;.\MPU6050DMP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -394,9 +394,66 @@
         </Group>
         <Group>
           <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>usart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\usart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\usart1.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\usart3.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\usart3.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>System</GroupName>
+        </Group>
+        <Group>
+          <GroupName>MPU6050DMP</GroupName>
+          <Files>
+            <File>
+              <FileName>dmpKey.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MPU6050DMP\dmpKey.h</FilePath>
+            </File>
+            <File>
+              <FileName>dmpmap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MPU6050DMP\dmpmap.h</FilePath>
+            </File>
+            <File>
+              <FileName>inv_mpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MPU6050DMP\inv_mpu.c</FilePath>
+            </File>
+            <File>
+              <FileName>inv_mpu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MPU6050DMP\inv_mpu.h</FilePath>
+            </File>
+            <File>
+              <FileName>inv_mpu_dmp_motion_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MPU6050DMP\inv_mpu_dmp_motion_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>inv_mpu_dmp_motion_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MPU6050DMP\inv_mpu_dmp_motion_driver.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Start</GroupName>
