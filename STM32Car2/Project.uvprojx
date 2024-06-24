@@ -415,10 +415,52 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\usart3.h</FilePath>
             </File>
+            <File>
+              <FileName>I2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\I2C.h</FilePath>
+            </File>
+            <File>
+              <FileName>I2C_MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\I2C_MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C_MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\I2C_MPU6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\MPU6050.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>System</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\delay.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>MPU6050DMP</GroupName>

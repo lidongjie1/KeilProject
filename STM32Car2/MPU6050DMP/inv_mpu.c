@@ -27,7 +27,8 @@
 #include "I2C.h"
 #include "delay.h"
 #include "Time.h"
-#include "usart.h"
+#include "usart1.h"
+#include "usart3.h"
 /* The following functions must be defined for this platform:
  * i2c_write(unsigned char slave_addr, unsigned char reg_addr,
  *      unsigned char length, unsigned char const *data)

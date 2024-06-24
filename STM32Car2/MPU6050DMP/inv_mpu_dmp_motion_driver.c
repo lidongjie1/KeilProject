@@ -25,7 +25,8 @@
 #include "dmpKey.h"
 #include "dmpmap.h"
 #include "delay.h"
-#include "usart.h"
+#include "usart1.h"
+#include "usart3.h"
 
 #define  MOTION_DRIVER_TARGET_MSP430
 /* The following functions must be defined for this platform:
@@ -1452,11 +1453,11 @@ void run_self_test(void)
         accel[1] *= accel_sens;
         accel[2] *= accel_sens;
         dmp_set_accel_bias(accel);
-		PrintChar("setting bias succesfully ......\n");
+		USART1_SendString("setting bias succesfully ......\n");
     }
 	else
 	{
-		PrintChar("bias has not been modified ......\n");
+		USART1_SendString("bias has not been modified ......\n");
 	}
 
 

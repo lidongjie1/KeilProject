@@ -29,3 +29,4 @@
 .\objects\stm32f10x_it.o: .\Library\stm32f10x_usart.h
 .\objects\stm32f10x_it.o: .\Library\stm32f10x_wwdg.h
 .\objects\stm32f10x_it.o: .\Library\misc.h
+.\objects\stm32f10x_it.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
