@@ -24,5 +24,35 @@
    1. 在项目录下创建MPU6050DMP文件夹
    ![dmp](https://github.com/lidongjie1/KeilProject/blob/dev-1/dmp.png)
 2. 软件实现IIC通讯
-   1. 
+   1. 相关文件如下图所示
+   ![I2C](https://github.com/lidongjie1/KeilProject/blob/dev-1/I2C.png)
+   ```C
+      /*
+         端口配置
+         PB8 - SCL
+         PB9 - SDA
+      */
+
+      /*          */
+      I2C_Start(void);
+
+      /*          */
+      void I2C_Stop(void);
+
+      /*          */
+      I2C_Ack(void);
+
+      /*          */
+      I2C_NoAck(void);
+
+      /*          */
+      I2C_WaitAck(void);
+
+      /*          */
+      I2C_SendByte(uint8_t byte);
+      
+      /*          */
+      I2C_ReceiveByte(void);
+
+   ```
 3. MPU6050模块
