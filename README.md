@@ -93,4 +93,32 @@
 
 #### 3 USART模块设计
 1. USART1 模块
+   1. 用于和串口调试助手进行通讯
+   ```c
+      /*
+         端口配置
+            PA9	-	USART1(TX)  - GPIO_Mode_AF_PP（复用推挽输出）
+	         PA10	- 	USART1(RX)  - GPIO_Mode_IPU(上拉输入)
+      */
+     USART_InitStuct.USART_BaudRate = 115200;   // 波特率与上位机保持一致即可
+
+      /* 重定向输出 */
+      int fputc(int ch, FILE *f)
+      {
+         USART1_SendByte(ch);			//将printf的底层重定向到自己的发送字节函数
+         return ch;
+      }
+   ```
 2. USART3 模块
+   1. 用于与蓝牙模块通讯
+   ```c
+      /*
+         端口配置
+         PB10	-	USART3(TX)  - GPIO_Mode_AF_PP（复用推挽输出）
+	      PB11	- 	USART3(RX)  - GPIO_Mode_IPU(上拉输入)
+      */
+      USART_InitStuct.USART_BaudRate = 9600; //波特率配置成与蓝牙模块相同
+   ```
+#### 4 电机驱动模块设计
+1. PWM输出
+2. 编码器模块
