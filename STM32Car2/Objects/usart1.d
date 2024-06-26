@@ -28,4 +28,5 @@
 .\objects\usart1.o: .\Library\stm32f10x_usart.h
 .\objects\usart1.o: .\Library\stm32f10x_wwdg.h
 .\objects\usart1.o: .\Library\misc.h
+.\objects\usart1.o: Hardware\usart1.h
 .\objects\usart1.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

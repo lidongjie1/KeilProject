@@ -1453,11 +1453,11 @@ void run_self_test(void)
         accel[1] *= accel_sens;
         accel[2] *= accel_sens;
         dmp_set_accel_bias(accel);
-		USART1_SendString("setting bias succesfully ......\n");
+		PrintChar("setting bias succesfully ......\n");
     }
 	else
 	{
-		USART1_SendString("bias has not been modified ......\n");
+		PrintChar("bias has not been modified ......\n");
 	}
 
 

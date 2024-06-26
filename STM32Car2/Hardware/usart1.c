@@ -1,5 +1,5 @@
 #include "stm32f10x.h"                  // Device header
-#include <stdio.h>
+#include "usart1.h"
 /*
 GPIO口配置
 	PA9		-	USART1(TX)
@@ -60,12 +60,15 @@ void USART1_SendByte(uint8_t Byte)
 }
 
 /* 发送字符串 */
-void USART1_SendString(char *String)
+//输出字符串
+void PrintChar(char *s)
 {
-	uint8_t i;
-	for (i = 0; String[i] != '\0'; i ++)//遍历字符数组（字符串），遇到字符串结束标志位后停止
+	char *p;
+	p=s;
+	while(*p != '\0')
 	{
-		USART1_SendByte(String[i]);		//依次调用Serial_SendByte发送每个字节数据
+		USART1_SendByte(*p);
+		p++;
 	}
 }
 

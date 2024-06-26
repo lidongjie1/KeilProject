@@ -1,4 +1,5 @@
 .\objects\i2c.o: Hardware\I2C.c
+.\objects\i2c.o: Hardware\I2C.h
 .\objects\i2c.o: .\Start\stm32f10x.h
 .\objects\i2c.o: .\Start\core_cm3.h
 .\objects\i2c.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

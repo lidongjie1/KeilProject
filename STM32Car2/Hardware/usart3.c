@@ -54,8 +54,8 @@ void Usart3_Init(void)
 /* 发送一个字节 */
 void USART3_SendByte(uint8_t Byte)
 {
-	USART_SendData(USART1, Byte);		
-	while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);	//等待发送完成
+	USART_SendData(USART3, Byte);		
+	while (USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);	//等待发送完成
 
 }
 

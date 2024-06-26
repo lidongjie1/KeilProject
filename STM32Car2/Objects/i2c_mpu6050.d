@@ -28,3 +28,4 @@
 .\objects\i2c_mpu6050.o: .\Library\stm32f10x_usart.h
 .\objects\i2c_mpu6050.o: .\Library\stm32f10x_wwdg.h
 .\objects\i2c_mpu6050.o: .\Library\misc.h
+.\objects\i2c_mpu6050.o: Hardware\I2C_MPU6050.h
