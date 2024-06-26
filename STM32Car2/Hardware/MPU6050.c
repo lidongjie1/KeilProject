@@ -30,7 +30,7 @@ int result=0;
 	
 		PrintChar("mpu initialization complete......\n ");		//mpu initialization complete	 	  
 
-		if(!mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL))		//mpu_set_sensor
+		if(!mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL))		//设置所需要的传感器，陀螺仪、加速度计
 			PrintChar("mpu_set_sensor complete ......\n");
 		else
 			PrintChar("mpu_set_sensor come across error ......\n");
@@ -40,36 +40,36 @@ int result=0;
 		else
 			PrintChar("mpu_configure_fifo come across error ......\n");
 
-		if(!mpu_set_sample_rate(DEFAULT_MPU_HZ))	   	  		//mpu_set_sample_rate
+		if(!mpu_set_sample_rate(DEFAULT_MPU_HZ))	   	  		//设置采样率
 		 PrintChar("mpu_set_sample_rate complete ......\n");
 		else
 		 	PrintChar("mpu_set_sample_rate error ......\n");
 
-		if(!dmp_load_motion_driver_firmware())   	  			//dmp_load_motion_driver_firmvare
+		if(!dmp_load_motion_driver_firmware())   	  			//加载dmp固件
 			PrintChar("dmp_load_motion_driver_firmware complete ......\n");
 		else
 			PrintChar("dmp_load_motion_driver_firmware come across error ......\n");
 
-		if(!dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation))) 	  //dmp_set_orientation
+		if(!dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation))) 	  //设置陀螺仪方向
 		 	PrintChar("dmp_set_orientation complete ......\n");
 		else
 		 	PrintChar("dmp_set_orientation come across error ......\n");
 
-		if(!dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
+		if(!dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |		// 设置dmp功能
 		    DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
 		    DMP_FEATURE_GYRO_CAL))		   	 					 //dmp_enable_feature
 		 	PrintChar("dmp_enable_feature complete ......\n");
 		else
 		 	PrintChar("dmp_enable_feature come across error ......\n");
 
-		if(!dmp_set_fifo_rate(DEFAULT_MPU_HZ))   	 			 //dmp_set_fifo_rate
+		if(!dmp_set_fifo_rate(DEFAULT_MPU_HZ))   	 			 //设置DMP输出速率（最大不超过200HZ）
 		 	PrintChar("dmp_set_fifo_rate complete ......\n");
 		else
 		 	PrintChar("dmp_set_fifo_rate come across error ......\n");
 
 		run_self_test();		//自检
 
-		if(!mpu_set_dmp_state(1))
+		if(!mpu_set_dmp_state(1))	//使能dmp
 		 	PrintChar("mpu_set_dmp_state complete ......\n");
 		else
 		 	PrintChar("mpu_set_dmp_state come across error ......\n");
@@ -85,7 +85,9 @@ int result=0;
 
 void MPU6050_Pose(void)
 {
-	
+	/*
+		从DMP（数字运动处理器）的FIFO（先进先出缓冲区）中读取陀螺仪、加速度计和四元数数据。
+	*/
 	dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors,&more);	 
 	/* Gyro and accel data are written to the FIFO by the DMP in chip frame and hardware units.
 	 * This behavior is convenient because it keeps the gyro and accel outputs of dmp_read_fifo and mpu_read_fifo consistent.
@@ -98,7 +100,9 @@ void MPU6050_Pose(void)
 	 * The orientation is set by the scalar passed to dmp_set_orientation during initialization. 
 	**/
 	
-	
+	/*
+		使用归一化的四元数计算姿态信息
+	*/
 	if(sensors & INV_WXYZ_QUAT )
 	{
 		q0 = quat[0] / q30;	

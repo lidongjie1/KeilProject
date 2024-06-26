@@ -20,10 +20,7 @@
     |扩展版（可自己设计打板）|亚博智能|1|
     |插拔式接线端子|2p-插头+插座|1|
 #### 2 MPU6050模块设计
-1. 移植DMP固件库（方便获得四元数和欧拉角）
-   1. 在项目录下创建MPU6050DMP文件夹
-   ![dmp](https://github.com/lidongjie1/KeilProject/blob/dev-1/dmp.png)
-2. 软件实现IIC通讯
+1. 软件实现IIC通讯
    1. 相关文件如下图所示
    ![I2C](https://github.com/lidongjie1/KeilProject/blob/dev-1/I2C.png)
    ```C
@@ -33,26 +30,67 @@
          PB9 - SDA
       */
 
-      /*          */
+      /*  
+         开始条件
+            SCL高电平期间，SDA从高电平切换到低电平
+      */
       I2C_Start(void);
 
-      /*          */
+      /*     
+         终止条件
+            SCL高电平期间，SDA从低电平切换到高电平
+      */
       void I2C_Stop(void);
 
-      /*          */
+      /*    
+         发送ACK（应答）信号 
+            SDA给低电平表示应答    
+      */
       I2C_Ack(void);
 
-      /*          */
+      /*
+         发送NACK（非应答）信号
+            SDA给高电平表示非应答
+      */
       I2C_NoAck(void);
 
-      /*          */
+      /*
+         等待接收从设备发送的ACK（应答）信号
+            根据读取SDA是高电平还是低电平判断是否应答
+      */
       I2C_WaitAck(void);
 
-      /*          */
+      /*
+         发送一个字节
+            主机将数据放在SDA线上，在SCL的高电平期间从机读取数据
+      */
       I2C_SendByte(uint8_t byte);
       
-      /*          */
+      /*
+         接收一个字节
+            从机将数据放到SDA线上，在SCL的高电平期间主机读取数据
+      */
       I2C_ReceiveByte(void);
-
+   ```
+2. 硬件实现I2C
+   1. 相关文件如下图所示
+   ![I2C_2](https://github.com/lidongjie1/KeilProject/blob/dev-1/I2C_2.png)
+   ```C
+   
    ```
 3. MPU6050模块
+   1. 相关文件如下图所示
+   ![MPU6050](https://github.com/lidongjie1/KeilProject/blob/dev-1/MPU6050.png)
+   2. MPU6050模块解析
+      1. MPU6050包含一个三轴陀螺仪，三轴加速度计，内部设有一个可扩展的数字运动处理器DMP，可以将欧拉角以四元数的形式输出。
+   3. 移植DMP固件库（方便获得四元数和欧拉角）
+      1. 在项目录下创建MPU6050DMP文件夹
+      ![dmp](https://github.com/lidongjie1/KeilProject/blob/dev-1/dmp.png)
+   4. MPU6050模块初始化
+      1. 在MPU6050.c文件下进行初始化
+         1. 详情初始化函数在void MPU6050_Init(void)函数
+
+
+#### 3 USART模块设计
+1. USART1 模块
+2. USART3 模块
