@@ -22,7 +22,9 @@
 #### 2 MPU6050模块设计
 1. 软件实现IIC通讯
    1. 相关文件如下图所示
+
    ![I2C](https://github.com/lidongjie1/KeilProject/blob/dev-1/I2C.png)
+   
    ```C
       /*
          端口配置
