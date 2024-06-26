@@ -74,18 +74,24 @@
    ```
 2. 硬件实现I2C
    1. 相关文件如下图所示
+   
    ![I2C_2](https://github.com/lidongjie1/KeilProject/blob/dev-1/I2C_2.png)
+
    ```C
    
    ```
 3. MPU6050模块
    1. 相关文件如下图所示
+   
    ![MPU6050](https://github.com/lidongjie1/KeilProject/blob/dev-1/MPU6050.png)
+
    2. MPU6050模块解析
       1. MPU6050包含一个三轴陀螺仪，三轴加速度计，内部设有一个可扩展的数字运动处理器DMP，可以将欧拉角以四元数的形式输出。
    3. 移植DMP固件库（方便获得四元数和欧拉角）
       1. 在项目录下创建MPU6050DMP文件夹
+   
       ![dmp](https://github.com/lidongjie1/KeilProject/blob/dev-1/dmp.png)
+      
    4. MPU6050模块初始化
       1. 在MPU6050.c文件下进行初始化
          1. 详情初始化函数在void MPU6050_Init(void)函数
