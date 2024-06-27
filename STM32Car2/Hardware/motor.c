@@ -69,7 +69,7 @@ void TIM2_PWM_Init(void)
 	TIM_OC3Init(TIM2, &TIM_OCInitStruct);	 //使能通道3
 	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
 	
-	/* PWM1 - TIM2_CH3	*/
+	/* PWM1 - TIM2_CH4	*/
 	TIM_OCInitStruct.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStruct.TIM_Pulse = CCR4_Val;	  //设置通道2的电平跳变值，输出另外一个占空比的PWM
 	TIM_OCInitStruct.TIM_OCPolarity = TIM_OCPolarity_High;  //当定时器计数值小于CCR1_Val时为高电平

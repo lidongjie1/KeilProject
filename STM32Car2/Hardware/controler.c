@@ -98,3 +98,54 @@ void delay_nms(u16 time)
       while(i--) ;    
    }
 }
+
+/*
+ 函数名称: CarUpstandInit
+ 功能描述: 全局变量初始化函数
+*/
+void CarUpstandInit(void)
+{
+	
+	
+	BST_s16LeftMotorPulse = BST_s16RightMotorPulse = 0;					  //左右脉冲值   初始化
+	BST_s32LeftMotorPulseSigma = BST_s32RightMotorPulseSigma = 0;		  //叠加脉冲数	 初始化
+
+	BST_fCarSpeed = BST_fCarSpeedOld = 0;								   //平衡小车车速	初始化
+	BST_fCarPosition = 0;												  //平衡小车位移量	初始化
+	BST_fCarAngle    = 0;												  //平衡小车车速	初始化
+
+	BST_fAngleControlOut = BST_fSpeedControlOut = BST_fBluetoothDirectionNew = 0;	//角度PWM、车速PWM、蓝牙控制PWM	 初始化
+	BST_fLeftMotorOut    = BST_fRightMotorOut   = 0;								//左右车轮PWM输出值 			 初始化
+	BST_fBluetoothSpeed  = 0;														//蓝牙控制车速值                 初始化
+	BST_fBluetoothDirectionL =BST_fBluetoothDirectionR= 0;						    //蓝牙控制左右旋转标志位         初始化
+	//BST_fBluetoothDirectionSL =BST_fBluetoothDirectionSR= 0;						//蓝牙控制左右转向标志位         初始化
+	
+    BST_u8MainEventCount=0;															//用于5ms定时器子程序SysTick_Handler(void)中总中断计数位
+	BST_u8SpeedControlCount=0;														//用于5ms定时器子程序SysTick_Handler(void)中50ms速度平衡融入计数位
+    BST_u8SpeedControlPeriod=0;														//用于5ms定时器子程序SysTick_Handler(void)中50ms速度平衡融入计数位
+
+	//fchaoshengbo=0;																//用于5ms定时器子程序SysTick_Handler(void)中超声波平衡融入计数位
+  
+}
+
+/* 保证PID的参数一直 */
+void ResetPID()
+{	
+	if(BST_fCarAngle_P != PID_Original[0])
+	{
+		BST_fCarAngle_P = PID_Original[0];
+	}
+	if(BST_fCarAngle_D != PID_Original[1])
+	{
+		BST_fCarAngle_D = PID_Original[1];
+	}
+	if(BST_fCarSpeed_P != PID_Original[2])
+	{
+		BST_fCarSpeed_P = PID_Original[2];
+	}
+	if(BST_fCarSpeed_I != PID_Original[3])
+	{
+		BST_fCarSpeed_I = PID_Original[3];
+	}
+
+}	
