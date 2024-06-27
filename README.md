@@ -153,5 +153,26 @@
       USART_InitStuct.USART_BaudRate = 9600; //波特率配置成与蓝牙模块相同
    ```
 #### 4 电机驱动模块设计
-1. PWM输出
+1. PWM(脉冲宽度调制)输出
+   
+![pwm](https://github.com/lidongjie1/KeilProject/blob/dev-1/pwm.png)
+
+
+   ```c
+      /*
+      控制GPIO PB12/PB13/PB14/PB15
+      PB12	- GPIO_Mode_Out_PP	-
+      PB13	- GPIO_Mode_Out_PP	-
+      PB14	- GPIO_Mode_Out_PP	-
+      PB15	- GPIO_Mode_Out_PP	-  
+      */
+      void Motor_Init(void)
+
+      /*	
+      初始化PWM输出，PWM输出电机MOTOR  TIM2_CH3/TIM2_CH4 
+         PWM2 - TIM2_CH3
+         PWM1 - TIM2_CH4
+      */
+      void TIM2_PWM_Init(void)
+   ```
 2. 编码器模块
