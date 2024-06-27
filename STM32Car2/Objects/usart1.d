@@ -1,7 +1,7 @@
 .\objects\usart1.o: Hardware\usart1.c
 .\objects\usart1.o: .\Start\stm32f10x.h
 .\objects\usart1.o: .\Start\core_cm3.h
-.\objects\usart1.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart1.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\usart1.o: .\Start\system_stm32f10x.h
 .\objects\usart1.o: .\User\stm32f10x_conf.h
 .\objects\usart1.o: .\Library\stm32f10x_adc.h
@@ -29,4 +29,4 @@
 .\objects\usart1.o: .\Library\stm32f10x_wwdg.h
 .\objects\usart1.o: .\Library\misc.h
 .\objects\usart1.o: Hardware\usart1.h
-.\objects\usart1.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart1.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h

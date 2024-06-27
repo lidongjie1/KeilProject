@@ -1,9 +1,9 @@
 .\objects\inv_mpu.o: MPU6050DMP\inv_mpu.c
-.\objects\inv_mpu.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\inv_mpu.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\inv_mpu.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\inv_mpu.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\inv_mpu.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\inv_mpu.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\inv_mpu.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\inv_mpu.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\inv_mpu.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\inv_mpu.o: D:\Keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\inv_mpu.o: MPU6050DMP\inv_mpu.h
 .\objects\inv_mpu.o: .\Start\stm32f10x.h
 .\objects\inv_mpu.o: .\Start\core_cm3.h
@@ -35,6 +35,6 @@
 .\objects\inv_mpu.o: .\Library\misc.h
 .\objects\inv_mpu.o: .\Hardware\I2C.h
 .\objects\inv_mpu.o: .\System\delay.h
-.\objects\inv_mpu.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\Time.h
+.\objects\inv_mpu.o: D:\Keil5\ARM\ARMCC\Bin\..\include\Time.h
 .\objects\inv_mpu.o: .\Hardware\usart1.h
 .\objects\inv_mpu.o: .\Hardware\usart3.h

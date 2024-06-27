@@ -2,7 +2,7 @@
 .\objects\i2c.o: Hardware\I2C.h
 .\objects\i2c.o: .\Start\stm32f10x.h
 .\objects\i2c.o: .\Start\core_cm3.h
-.\objects\i2c.o: D:\Software\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\i2c.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\i2c.o: .\Start\system_stm32f10x.h
 .\objects\i2c.o: .\User\stm32f10x_conf.h
 .\objects\i2c.o: .\Library\stm32f10x_adc.h
