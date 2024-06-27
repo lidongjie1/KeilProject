@@ -465,6 +465,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\encoder.h</FilePath>
             </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\systick.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
