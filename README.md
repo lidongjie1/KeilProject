@@ -158,6 +158,7 @@
 ![pwm](https://github.com/lidongjie1/KeilProject/blob/dev-1/pwm.png)
 
 
+   1. 根据占空比的值调节电机的转速
    ```c
       /*
       控制GPIO PB12/PB13/PB14/PB15
@@ -176,3 +177,31 @@
       void TIM2_PWM_Init(void)
    ```
 2. 编码器模块
+   ```c
+         /*
+         光电编码器 TIM3_CH1/TIM3_CH2
+            TIM3_CH1	- PA6
+            TIM3_CH2	- PA7
+         光电编码器 TIM4_CH1/TIM4_CH2
+            TIM4_CH1	- PB6	(这里与I2C1_SCL冲突，在硬件实现I2C时候采用了引脚重映射)
+            TIM4_CH2	- PB7	(这里与I2C1_SDA冲突，在硬件实现I2C时候采用了引脚重映射)
+         */
+
+        /* 初始化TIM3时基单元、TIM3_IRQn中断、输入比较模块 */
+        void TIM3_Encoder_Init(void)
+
+        /*初始化TIM4时基单元、TIM4_IRQn中断、输入比较模块 */
+        void TIM4_Encoder_Init(void)
+   ```
+
+#### 5 超声波模块
+
+
+#### 6 蓝牙模块
+
+
+#### 7 平衡车控制模块
+1. PID算法
+   1. 稍等
+2. 卡兹曼滤波
+   1. 稍等
