@@ -30,3 +30,6 @@
 .\objects\stm32f10x_it.o: .\Library\stm32f10x_wwdg.h
 .\objects\stm32f10x_it.o: .\Library\misc.h
 .\objects\stm32f10x_it.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\stm32f10x_it.o: .\Hardware\controler.h
+.\objects\stm32f10x_it.o: .\Hardware\outputdata.h
+.\objects\stm32f10x_it.o: .\Hardware\mpu6050.h

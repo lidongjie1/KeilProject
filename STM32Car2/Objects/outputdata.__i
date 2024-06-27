@@ -1,6 +1,0 @@
---c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_ldm --split_sections -I .\User -I .\System -I .\Start -I .\Library -I .\Hardware -I .\MPU6050DMP
--I.\RTE\_Target_1
--ID:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
--ID:\Keil5\ARM\CMSIS\Include
--D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
--o .\objects\outputdata.o --omf_browse .\objects\outputdata.crf --depend .\objects\outputdata.d "Hardware\outputdata.c"

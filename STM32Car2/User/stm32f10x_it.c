@@ -24,10 +24,10 @@
 /* Includes ------------------------------------------------------------------*/
  #include "stm32f10x_it.h"
  #include <stdio.h>
- #include "upstandingcar.h"
+ #include "controler.h"
  #include "outputdata.h"
  #include "mpu6050.h"
- #include "UltrasonicWave.h"
+ //#include "UltrasonicWave.h"
  #include "stm32f10x_exti.h"
  
 
@@ -157,12 +157,12 @@ void SysTick_Handler(void)				 //5ms定时器
 	AngleControl();					  //角度PD控制PWNM输出
 	MotorOutput();					  //小车总PWM输出  	
 
-	if(BST_u8trig>=2)
-	{
-		UltrasonicWave_StartMeasure();	//调用超声波发送程序 给Trig脚 <10us 高电平		 
-		chaoshengbo();			       //计算超声波测距距离
-		BST_u8trig=0;
-	}
+//	if(BST_u8trig>=2)
+//	{
+//		UltrasonicWave_StartMeasure();	//调用超声波发送程序 给Trig脚 <10us 高电平		 
+//		chaoshengbo();			       //计算超声波测距距离
+//		BST_u8trig=0;
+//	}
     if(BST_u8SpeedControlCount>=8)       //当计数值8时，即总系统运行40ms时候(每10个角度PWM输出中融入1个速度PWM输出，这样能保持速度PID输出不干扰角度PID输出，从而影响小车平衡)
 	{	
 		SpeedControl();                     //车模速度控制函数   每40ms调用一次
