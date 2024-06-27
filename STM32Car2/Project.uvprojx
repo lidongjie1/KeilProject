@@ -475,6 +475,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\systick.h</FilePath>
             </File>
+            <File>
+              <FileName>outputdata.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\outputdata.c</FilePath>
+            </File>
+            <File>
+              <FileName>outputdata.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\outputdata.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
