@@ -13,7 +13,7 @@ void I2C_MPU6050_Init(void)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1,ENABLE);
 	
-	/* 重映射I2C	引脚 */
+	/* 重映射I2C引脚 */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
 	GPIO_PinRemapConfig(GPIO_Remap_I2C1,ENABLE);
 	

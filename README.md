@@ -80,7 +80,32 @@
    ![I2C_2](https://github.com/lidongjie1/KeilProject/blob/dev-1/I2C_2.png)
 
    ```C
-   
+      /*
+         I2C1引脚重映射
+            PB8   - I2C1_SCL  - GPIO配置成复用开漏输出
+            PB9   - I2C1_SDA  - GPIO配置成复用开漏输出
+      */
+
+      /* 
+      MPU6050寄存器写入 
+         1.产生起始条件，等待EV5事件
+         2.发送模式指定其读取的地址，等待EV6事件
+         3.发送数据，等待EV8事件
+         4.结束，等待EV8_2事件
+         5. 产生终止条件
+      */
+      void I2C_ByteWrite(uint8_t RegAddress, uint8_t Data) 
+
+      /* 
+      MPU6050寄存器读入 
+         1.产生起始条件，等待EV5事件
+         2.发送模式指定其读取的地址，等待EV6事件
+         3.重新产生起始条件，等待EV5事件
+         4.发送设备地址+读信号（方向为接收）
+         5.提前产生终止条件
+         6.接收数据，同时等待EV7事件
+      */
+      uint8_t I2C_ByteRead(uint8_t RegAddress)
    ```
 3. MPU6050模块
    1. 相关文件如下图所示
