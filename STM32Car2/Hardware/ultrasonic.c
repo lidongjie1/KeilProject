@@ -71,7 +71,7 @@ void EXTI1_IRQHandler(void)
 			TIM_SetCounter(TIM1,0);
 			TIM_Cmd(TIM1, ENABLE);   //开启时钟	Tim1
 		
-			   count=	1;               
+			 count=1;               
             while(count)	                 //等待低电平
 			{
 					if(TIM_GetCounter(TIM1)>=10) //9*10us=90us
@@ -84,8 +84,6 @@ void EXTI1_IRQHandler(void)
 			}
 			TIM_Cmd(TIM1, DISABLE);			                                 //定时器 Tim1 关闭
 			
-		
-	  //EXTI->IMR&=~(1<<1);  
 	
 	EXTI_ClearITPendingBit(EXTI_Line1);  //清除EXTI1线路挂起位
 	
