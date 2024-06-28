@@ -52,7 +52,7 @@ void Usart3_Init(void)
 
 
 /* 发送一个字节 */
-void USART3_SendByte(uint8_t Byte)
+void USART3_Send_Byte(uint8_t Byte)
 {
 	USART_SendData(USART3, Byte);		
 	while (USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);	//等待发送完成
@@ -65,10 +65,20 @@ void USART3_SendString(char *String)
 	uint8_t i;
 	for (i = 0; String[i] != '\0'; i ++)//遍历字符数组（字符串），遇到字符串结束标志位后停止
 	{
-		USART3_SendByte(String[i]);		//依次调用Serial_SendByte发送每个字节数据
+		USART3_Send_Byte(String[i]);		//依次调用Serial_SendByte发送每个字节数据
 	}
 }
 
+void UART3_Send_Char(char *s)
+{
+	char *p;
+	p=s;
+	while(*p != '\0')
+	{
+		USART3_Send_Byte(*p);
+		p++;
+	}	
+}
 
 ///* 重定向输出 */
 //int fputc(int ch, FILE *f)
@@ -78,15 +88,15 @@ void USART3_SendString(char *String)
 //}
 
 
-void USART3_IRQHandler(void)
-{
+//void USART3_IRQHandler(void)
+//{
 
-	if(USART_GetITStatus(USART3,USART_IT_RXNE)==SET)//是否触发接收中断
-	{
-		USART_ClearITPendingBit(USART3,USART_IT_RXNE);//清除中断
-	}
-	
-	
-}
+//	if(USART_GetITStatus(USART3,USART_IT_RXNE)==SET)//是否触发接收中断
+//	{
+//		USART_ClearITPendingBit(USART3,USART_IT_RXNE);//清除中断
+//	}
+//	
+//	
+//}
 
 

@@ -104,13 +104,12 @@ uint8_t I2C_ByteRead(uint8_t RegAddress)
 
 
 /* 获得连续16位置数据 */
-uint32_t GetData(uint8_t RegAddress)
+unsigned int GetData(unsigned char REG_Address)
 {
-	
-	uint8_t H_data,L_data;
-	
-	H_data = I2C_ByteRead(RegAddress);
-	L_data = I2C_ByteRead(RegAddress+1);
-	return (H_data<<8)+L_data;   //合成数据
+	char H,L;
+	H=I2C_ByteRead(REG_Address);
+	L=I2C_ByteRead(REG_Address+1);
+	return (H<<8)+L;   //合成数据
 }
+
 

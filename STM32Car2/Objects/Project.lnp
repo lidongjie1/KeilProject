@@ -11,6 +11,8 @@
 ".\objects\systick.o"
 ".\objects\outputdata.o"
 ".\objects\controler.o"
+".\objects\adc.o"
+".\objects\ultrasonic.o"
 ".\objects\delay.o"
 ".\objects\inv_mpu.o"
 ".\objects\inv_mpu_dmp_motion_driver.o"

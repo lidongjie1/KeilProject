@@ -28,7 +28,7 @@
 //void I2C_Config(void);
 void I2C_MPU6050_Init(void);
 //void 	InitMPU6050(void);
-uint32_t GetData(uint8_t RegAddress);
+unsigned int GetData(unsigned char REG_Address);
 
 
 #endif

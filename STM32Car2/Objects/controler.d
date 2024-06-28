@@ -30,12 +30,14 @@
 .\objects\controler.o: .\Library\stm32f10x_wwdg.h
 .\objects\controler.o: .\Library\misc.h
 .\objects\controler.o: Hardware\I2C_MPU6050.h
-.\objects\controler.o: Hardware\motor.h
-.\objects\controler.o: Hardware\encoder.h
+.\objects\controler.o: Hardware\MOTOR.h
 .\objects\controler.o: Hardware\usart1.h
 .\objects\controler.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\controler.o: Hardware\usart3.h
 .\objects\controler.o: Hardware\MPU6050.H
+.\objects\controler.o: Hardware\ultrasonic.h
+.\objects\controler.o: Hardware\sys.h
 .\objects\controler.o: D:\Keil5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\controler.o: D:\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\controler.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\controler.o: Hardware\adc.h

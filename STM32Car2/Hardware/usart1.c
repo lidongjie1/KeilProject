@@ -27,14 +27,6 @@ void Usart1_Init(void)
 	GPIO_InitStuct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA,&GPIO_InitStuct);
 	
-	/*NVIC初始化*/
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	NVIC_InitTypeDef NVIC_InitStruct;
-	NVIC_InitStruct.NVIC_IRQChannel = USART1_IRQn;
-	NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 4;
-	NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0;
-	
 	/*中断输出配置*/
 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);			//开启串口接收数据的中断
 	
@@ -79,18 +71,6 @@ int fputc(int ch, FILE *f)
 {
 	USART1_SendByte(ch);			//将printf的底层重定向到自己的发送字节函数
 	return ch;
-}
-
-
-void USART1_IRQHandler(void)
-{
-
-	if(USART_GetITStatus(USART1,USART_IT_RXNE)==SET)//是否触发接收中断
-	{
-		USART_ClearITPendingBit(USART1,USART_IT_RXNE);//清除中断
-	}
-	
-	
 }
 
 

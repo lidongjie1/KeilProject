@@ -1,4 +1,7 @@
 .\objects\main.o: User\main.c
+.\objects\main.o: .\Hardware\mpu6050.h
+.\objects\main.o: .\Hardware\I2C_MPU6050.h
+.\objects\main.o: .\Hardware\motor.h
 .\objects\main.o: .\Start\stm32f10x.h
 .\objects\main.o: .\Start\core_cm3.h
 .\objects\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -28,3 +31,13 @@
 .\objects\main.o: .\Library\stm32f10x_usart.h
 .\objects\main.o: .\Library\stm32f10x_wwdg.h
 .\objects\main.o: .\Library\misc.h
+.\objects\main.o: .\Hardware\controler.h
+.\objects\main.o: .\Hardware\SysTick.h
+.\objects\main.o: .\Hardware\adc.h
+.\objects\main.o: .\Hardware\usart1.h
+.\objects\main.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: .\Hardware\usart3.h
+.\objects\main.o: .\Hardware\i2c.h
+.\objects\main.o: .\Hardware\ultrasonic.h
+.\objects\main.o: .\Hardware\sys.h
+.\objects\main.o: .\Hardware\encoder.h
