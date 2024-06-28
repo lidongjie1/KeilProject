@@ -208,11 +208,34 @@
    /*
       PB0  - TRIG      
       PB1  - ECHO   
-
       1.将外部中断线与PB1进行关联
-      2.初始化TIM1定时器，将其配置成
+      2.初始化TIM1定时器，用于记录超声波返回的高电平时间
+      3.接收到反射超声波时，触发外部中断，在外部中断内统计高电平持续时间
    */
-   ```
+         void EXTI1_IRQHandler(void)
+      {
+         if(EXTI_GetITStatus(EXTI_Line1) != RESET)
+         {
+               TIM_SetCounter(TIM1,0);
+               TIM_Cmd(TIM1, ENABLE);   //开启时钟	Tim1
+            
+               count=1;               
+                  while(count)	                 //等待低电平
+               {
+                     if(TIM_GetCounter(TIM1)>=10) //9*10us=90us
+                     { 
+                        TIM_Cmd(TIM1, DISABLE); 	// 关闭时钟 Tim1
+                        count=0;					// 循环数清零
+                     } 
+                     else  count=GPIO_ReadInputDataBit(ECHO_PORT,ECHO_PIN); //检测PB1是否高电平 高 则count为1 低 则count为0  	
+                              
+               }
+               TIM_Cmd(TIM1, DISABLE);			                                 //定时器 Tim1 关闭
+         EXTI_ClearITPendingBit(EXTI_Line1);  //清除EXTI1线路挂起位
+         
+         }
+      }
+         ```
 #### 6 蓝牙模块
 1. 引脚说明
    1. VCC：这个引脚用于连接模块的电源正极，通常接5V的电源
