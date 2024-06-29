@@ -27,11 +27,11 @@ int main(void)
        
 	
 	SystemInit();                   //=====系统初始化
-	Timerx_Init(5000,7199);				   //定时器TIM1
-	UltrasonicWave_Configuration(); 	   //超声波初始化设置 IO口及中断设置			    
+	//Timerx_Init(5000,7199);				   //定时器TIM1
+	//UltrasonicWave_Configuration(); 	   //超声波初始化设置 IO口及中断设置			    
 
 	Usart1_Init();						//串口1初始化 上位机
-	Usart3_Init();						//串口3初始化 蓝牙与USART3公用相同IO口
+	//Usart3_Init();						//串口3初始化 蓝牙与USART3公用相同IO口
 
 	TIM2_PWM_Init();					   //PWM输出初始化
 	Motor_Init();				  //电机IO口初始化

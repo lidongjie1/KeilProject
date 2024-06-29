@@ -342,12 +342,12 @@ void SpeedControl(void)
 {
   
  
-	BST_fCarSpeed = (BST_s32LeftMotorPulseSigma  + BST_s32RightMotorPulseSigma );// * 0.5 ;		  //左右电机脉冲数平均值作为小车当前车速
+	BST_fCarSpeed = (BST_s32LeftMotorPulseSigma  + BST_s32RightMotorPulseSigma ) ;//* 0.5 ;		  //左右电机脉冲数平均值作为小车当前车速
 	BST_s32LeftMotorPulseSigma =BST_s32RightMotorPulseSigma = 0;	  //全局变量 注意及时清零		
 	BST_fCarSpeedOld *= 0.7;
 	BST_fCarSpeedOld +=BST_fCarSpeed*0.3;
 	
-	BST_fCarPosition += BST_fCarSpeedOld; 		 //路程  即速度积分	   1/11 3:03
+	BST_fCarPosition += BST_fCarSpeedOld; 		//路程  即速度积分	   1/11 3:03
 	BST_fCarPosition += BST_fBluetoothSpeed;   //融合蓝牙给定速度
 	BST_fCarPosition +=	fchaoshengbo;		   //融合超声波给定速度
 	if(stopflag==1)

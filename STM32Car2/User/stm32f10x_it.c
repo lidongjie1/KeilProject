@@ -27,7 +27,7 @@
  #include "controler.h"
  #include "outputdata.h"
  #include "mpu6050.h"
- //#include "UltrasonicWave.h"
+ #include "ultrasonic.h"
  #include "stm32f10x_exti.h"
  
 
@@ -157,12 +157,12 @@ void SysTick_Handler(void)				 //5ms定时器
 	AngleControl();					  //角度PD控制PWNM输出
 	MotorOutput();					  //小车总PWM输出  	
 
-//	if(BST_u8trig>=2)
-//	{
-//		UltrasonicWave_StartMeasure();	//调用超声波发送程序 给Trig脚 <10us 高电平		 
-//		chaoshengbo();			       //计算超声波测距距离
-//		BST_u8trig=0;
-//	}
+	if(BST_u8trig>=2)
+	{
+		UltrasonicWave_StartMeasure();	//调用超声波发送程序 给Trig脚 <10us 高电平		 
+		chaoshengbo();			       //计算超声波测距距离
+		BST_u8trig=0;
+	}
     if(BST_u8SpeedControlCount>=8)       //当计数值8时，即总系统运行40ms时候(每10个角度PWM输出中融入1个速度PWM输出，这样能保持速度PID输出不干扰角度PID输出，从而影响小车平衡)
 	{	
 		SpeedControl();                     //车模速度控制函数   每40ms调用一次
@@ -170,8 +170,6 @@ void SysTick_Handler(void)				 //5ms定时器
 		BST_u8SpeedControlPeriod=0;		  //平滑输出比例值清零
 	}
 		
-
-
 			    
 }	   
 #endif
@@ -214,52 +212,7 @@ void SysTick_Handler(void)
 	
 }
 #endif
-/*
-void USART3_IRQHandler(void)
-{
-	
-	u8 ucBluetoothValue;
-	if(USART3->SR&(1<<5))//接收到数据
-	{	 
-		ucBluetoothValue=USART1->DR; 
 
-    }
-	if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
-	{ 	
-	    ucBluetoothValue = USART_ReceiveData(USART3);
-	  	switch (ucBluetoothValue)
-	{
-	 	  case 0x01 : BST_fCarSpeed_P+=5;break;//BST_fBluetoothSpeed =   210 ; break;	   //向前速度 250 
-	  case 0x02 : BST_fCarSpeed_P-=5;break;//BST_fBluetoothSpeed = (-200);  break;	   //后退速度 -250
-	  case 0x03 : BST_fCarSpeed_I+=0.05;break;//BST_fBluetoothDirectionSR = 1; break;//左转
-	  case 0x04 : BST_fCarSpeed_I-=0.05;break;//BST_fBluetoothDirectionSL = 1; break;//右转
-	  case 0x05 : BST_fBluetoothDirectionSR = 1; break ;//左旋
-	  case 0x06 : BST_fBluetoothDirectionSL = 1; break ;//右旋转
-	  case 0x07 : BST_fBluetoothDirectionL  =0; BST_fBluetoothDirectionR = 0; BST_fBluetoothDirectionSL =0; BST_fBluetoothDirectionSR = 0;  break; //停
-	  case 0x08 : BST_fBluetoothDirectionSL =0; BST_fBluetoothDirectionSR = 0;directionl=0;directionr=0; break; //停旋转
-	  case 0x09 : BST_fBluetoothSpeed =   0 ;  break;
-		
-// 		case 0x0A : BST_fCarTurn_P +=   1 ;  break;
-// 		case 0x0B : BST_fCarTurn_P -=  1 ;  break;	
-// 		case 0x0C : BST_fCarTurn_D +=   0.1 ;  break;
-// 		case 0x0D : BST_fCarTurn_D -=   0.1 ;  break;
-		
-
-		case 0x0A : BST_fCarAngle_P +=   5 ;  break;
-    case 0x0B : BST_fCarAngle_P -=   5 ;  break;	
-    case 0x0C : BST_fCarAngle_D +=   0.1 ;  break;
-    case 0x0D : BST_fCarAngle_D -=   0.1 ;  break;
-		
-    case 0x0E : BST_fBluetoothSpeed =   0 ;  break;
-    case 0x0F : BST_fBluetoothSpeed =   0 ;  break;		
-	  default : BST_fBluetoothSpeed = 0; BST_fBluetoothDirectionL=BST_fBluetoothDirectionR = 0;BST_fBluetoothDirectionSR=BST_fBluetoothDirectionSL=0;break;
-	
-	}
-	USART_ClearITPendingBit(USART3, USART_IT_RXNE); //清除中断标志
-	} 
-	 
-}
-*/
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */

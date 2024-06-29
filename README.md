@@ -271,7 +271,7 @@
 |AT+CMODE=Param|OK|Param:0——指定蓝牙地址连接模式（指定蓝牙地址由绑定指令设置）1——任意蓝牙地址连接模式（不受绑定指令设置地址的约束）2——回环角色（Slave-Loop）默认连接模式：0|设置模块模式|
 |AT+ROLE?|+ROLE:Param OK|Param：参数取值如下：0——从角色（Slave）1——主角色（Master）2——回环角色（Slave-Loop）默认值：0|获取当前模式|
 
-4. 相关代码说明
+4. 相关代码说明(见UASRT3初始化)
 
 
 #### 7 平衡车控制模块
@@ -302,18 +302,82 @@
 3. 相关模块代码
    1. 角度环控制函数
    ```C
-   
+   /*
+      比例输入：期望角度与当前角度的偏差
+      通过DMP读取小车当前的角度
+   */
+   void AngleControl(void)	
+   {
+      /* BST_fCarAngle为角度偏差   */
+      BST_fAngleControlOut =  BST_fCarAngle * BST_fCarAngle_P + gyro[0] * BST_fCarAngle_D ;	  //角度PD控制			
+   } 
    ```
    2. 速度环控制函数
    ```C
-   
+   /*
+      比例输入：期望速度与当前速度的偏差
+
+   */
+   void SpeedControl(void)
+   {
+      /* 左轮速度加右轮速度，得到小车的几何中心的速度，代表小车的速度 */
+      BST_fCarSpeed = (BST_s32LeftMotorPulseSigma  + BST_s32RightMotorPulseSigma )
+
+      BST_fSpeedControlOutNew = (BST_fCarSpeedOld -CAR_SPEED_SET ) * BST_fCarSpeed_P + (BST_fCarPosition - CAR_POSITION_SET ) * BST_fCarSpeed_I; //速度PI算法 速度*P +位移*I=速度PWM输出
+   }
    ```
    3. 电机控制函数
    ```c
-   
+   /*
+      电机输出函数
+         将直立控制、速度控制、方向控制的输出量进行叠加控制输出
+   */
+   void MotorOutput(void)
+   {
+   BST_fLeftMotorOut  = BST_fAngleControlOut +BST_fSpeedControlOutNew + BST_fBluetoothDirectionNew;//+directionl - BST_fBluetoothDirectionNew;			//左电机转向PWM控制融合平衡角度、速度输出	
+    BST_fRightMotorOut = BST_fAngleControlOut +BST_fSpeedControlOutNew - BST_fBluetoothDirectionNew;//-directionl+ BST_fBluetoothDirectionNew;			//右电机转向PWM控制融合平衡角度、速度输出
+
+	if((s16)BST_fLeftMotorOut  > MOTOR_OUT_MAX)	BST_fLeftMotorOut  = MOTOR_OUT_MAX;
+	if((s16)BST_fLeftMotorOut  < MOTOR_OUT_MIN)	BST_fLeftMotorOut  = MOTOR_OUT_MIN;
+	if((s16)BST_fRightMotorOut > MOTOR_OUT_MAX)	BST_fRightMotorOut = MOTOR_OUT_MAX;
+	if((s16)BST_fRightMotorOut < MOTOR_OUT_MIN)	BST_fRightMotorOut = MOTOR_OUT_MIN;
+    SetMotorVoltageAndDirection((s16)BST_fLeftMotorOut,(s16)BST_fRightMotorOut);
+   }
+   /*
+      用于设置电机的电压和方向。函数接受两个参数 s16LeftVoltage 和 s16RightVoltage，分别表示左电机和右电机的电压。
+   */
+   void SetMotorVoltageAndDirection(s16 s16LeftVoltage,s16 s16RightVoltage)
    ```
-   4. 
+   4. [相关知识参考此篇博客](https://blog.csdn.net/Carbon6/article/details/106580443)
 
 
-
-#### 8代码启动流程
+#### 8 代码启动流程
+1. mian函数程序初始化
+   1. 系统初始化
+   2. TIM1定时器初始化
+   3. 电机端口、PWM、编码器初始化
+   4. 软件I2C初始化、MPU6050初始化、DMP初始化
+   5. ADC初始化，用于获得电压
+   6. 小车相关参数初始化
+   7. 启动系统滴答定时器 SysTick，定时更新小车数据，SysTick_Handler()中更新小车数据
+   ```c
+         void SysTick_Init(void)		  //1ms定时时钟
+         {
+            /* SystemFrequency / 100     10ms中断一次
+               SystemFrequency / 1000    1ms中断一次
+            * SystemFrequency / 100000	 10us中断一次
+            * SystemFrequency / 1000000 1us中断一次
+            */
+         //	if (SysTick_Config(SystemFrequency / 100000))	// ST3.0.0库版本
+            if (SysTick_Config(SystemCoreClock / 200))	// ST3.5.0库版本   1s/x= a ms  
+            { 
+               /* Capture error */ 
+               while (1);
+            }
+               // 关闭滴答定时器  
+            SysTick->CTRL &= ~ SysTick_CTRL_ENABLE_Msk;
+         }
+   ```
+   8. main函数while循环
+      1. MPU6050_Pose();//获取MPU6050角度状态
+      2. 蓝牙数据传输控制（待实现）

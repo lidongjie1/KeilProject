@@ -33,3 +33,5 @@
 .\objects\stm32f10x_it.o: .\Hardware\controler.h
 .\objects\stm32f10x_it.o: .\Hardware\outputdata.h
 .\objects\stm32f10x_it.o: .\Hardware\mpu6050.h
+.\objects\stm32f10x_it.o: .\Hardware\ultrasonic.h
+.\objects\stm32f10x_it.o: .\Hardware\sys.h
