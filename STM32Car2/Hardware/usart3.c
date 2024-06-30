@@ -22,7 +22,7 @@ void Usart3_Init(void)
 	GPIO_Init(GPIOB,&GPIO_InitStuct);
 	
 	GPIO_InitStuct.GPIO_Mode = GPIO_Pin_11 ;
-	GPIO_InitStuct.GPIO_Pin = GPIO_Mode_IPU;	//上拉输入
+	GPIO_InitStuct.GPIO_Pin = GPIO_Mode_IN_FLOATING;	//上拉输入
 	GPIO_InitStuct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB,&GPIO_InitStuct);
 	

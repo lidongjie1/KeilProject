@@ -27,12 +27,24 @@ Project File Date:  06/28/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling controler.c...
+compiling usart1.c...
 Warning: C4008W: splitting LDM/STM has no benefit
-Hardware\controler.c: 1 warning, 0 errors
+Hardware\usart1.c(20): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_InitStuct.GPIO_Mode = 
+PIO_Pin_9 ;
+Hardware\usart1.c(20): warning:  #69-D: integer conversion resulted in truncation
+  	GPIO_InitStuct.GPIO_Mode = 
+PIO_Pin_9 ;
+Hardware\usart1.c(25): warning:  #188-D: enumerated type mixed with another type
+  	GPIO_InitStuct.GPIO_Mode = 
+PIO_Pin_10 ;
+Hardware\usart1.c(25): warning:  #69-D: integer conversion resulted in truncation
+  	GPIO_InitStuct.GPIO_Mode = 
+PIO_Pin_10 ;
+Hardware\usart1.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=39036 RO-data=4228 RW-data=452 ZI-data=2164  
-".\Objects\Project.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=38852 RO-data=4228 RW-data=452 ZI-data=2164  
+".\Objects\Project.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -46,7 +58,7 @@ Package Vendor: Keil
   D:\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

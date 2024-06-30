@@ -50,7 +50,6 @@ int main(void)
 	while (1)
 	{
 		MPU6050_Pose();						 //»ñÈ¡MPU6050½Ç¶È×´Ì¬
-
 		if (newLineReceived)
 		{
 			ProtocolCpyData();

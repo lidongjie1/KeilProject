@@ -23,12 +23,9 @@ void Usart1_Init(void)
 	GPIO_Init(GPIOA,&GPIO_InitStuct);
 	
 	GPIO_InitStuct.GPIO_Mode = GPIO_Pin_10 ;
-	GPIO_InitStuct.GPIO_Pin = GPIO_Mode_IPU;	//上拉输入
+	GPIO_InitStuct.GPIO_Pin = GPIO_Mode_IN_FLOATING;	//上拉输入
 	GPIO_InitStuct.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA,&GPIO_InitStuct);
-	
-	/*中断输出配置*/
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);			//开启串口接收数据的中断
 	
 	/*USART1初始化*/
 	USART_InitTypeDef USART_InitStuct;
@@ -45,7 +42,7 @@ void Usart1_Init(void)
 
 
 /* 发送一个字节 */
-void USART1_SendByte(uint8_t Byte)
+void USART1_SendByte(unsigned char Byte)
 {
 	USART_SendData(USART1, Byte);		
 	while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);	//等待发送完成

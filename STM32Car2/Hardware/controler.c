@@ -72,11 +72,11 @@ float gyrx;
 float gy0;
 
 /*-----角度环和速度环PID控制参数-----*///以下参考为重点调试参考，同电池电压有关，建议充好电再调试
-float  BST_fCarAngle_P =75.3;//	91.3 //调大小时会左右摆，调大时会振动  请调到基本能够站立 P=91.3是用于给小车在运动过程使用
-float  BST_fCarAngle_D =0.21;	// 0.001 0.002 0.004 0.008 0.0010 0.011	 调小时反应慢，调大时会干扰
+float  BST_fCarAngle_P =-420;//	91.3 //调大小时会左右摆，调大时会振动  请调到基本能够站立 P=91.3是用于给小车在运动过程使用
+float  BST_fCarAngle_D =-1.5;	// 0.001 0.002 0.004 0.008 0.0010 0.011	 调小时反应慢，调大时会干扰
 
-float  BST_fCarSpeed_P=5.1;
-float  BST_fCarSpeed_I=0.10;
+float  BST_fCarSpeed_P=0.4;
+float  BST_fCarSpeed_I=0.002;
 
 const double PID_Original[4] ={91.3, 0.21, 5.1, 0.10}; 
 char  alldata[80];
