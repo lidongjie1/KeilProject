@@ -350,6 +350,8 @@
    ```
    4. [相关知识参考此篇博客](https://blog.csdn.net/Carbon6/article/details/106580443)
 4. PID调参心得
+   1. 直立环调参
+   2. 速度环调参
 
 #### 8 代码启动流程
 1. mian函数程序初始化
